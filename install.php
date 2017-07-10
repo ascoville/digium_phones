@@ -46,13 +46,13 @@ foreach ($entries as $entry=>$default_val) {
 };
 
 $queries[] = "CREATE TABLE IF NOT EXISTS digium_phones_devices (
-	`id` INT NOT NULL AUTO_INCREMENT,
+	`id` BIGINT NOT NULL AUTO_INCREMENT,
 	`name` VARCHAR(30),
 	PRIMARY KEY (`id`)
 );";
 
 $queries[] = "CREATE TABLE IF NOT EXISTS digium_phones_device_settings (
-	`deviceid` INT NOT NULL,
+	`deviceid` BIGINT NOT NULL,
 	`keyword` VARCHAR(30),
 	`val` VARCHAR(255),
 	PRIMARY KEY (`deviceid`, `keyword`)
@@ -60,13 +60,13 @@ $queries[] = "CREATE TABLE IF NOT EXISTS digium_phones_device_settings (
 
 $queries[] = "CREATE TABLE IF NOT EXISTS digium_phones_lines (
 	`id` INT NOT NULL,
-	`deviceid` INT NOT NULL,
+	`deviceid` BIGINT NOT NULL,
 	`extension` VARCHAR(45),
 	PRIMARY KEY (`deviceid`, `extension`)
 );";
 
 $queries[] = "CREATE TABLE IF NOT EXISTS digium_phones_extension_settings (
-	`extension` INT NOT NULL,
+	`extension` BIGINT NOT NULL,
 	`keyword` VARCHAR(30),
 	`val` VARCHAR(255),
 	PRIMARY KEY (`extension`, `keyword`)
@@ -99,7 +99,7 @@ $queries[] = "ALTER TABLE digium_phones_phonebook_entries ADD PRIMARY KEY (`id`,
 
 $queries[] = "CREATE TABLE IF NOT EXISTS digium_phones_device_phonebooks (
 	`id` INT NOT NULL,
-	`deviceid` INT NOT NULL,
+	`deviceid` BIGINT NOT NULL,
 	`phonebookid` INT NOT NULL,
 	PRIMARY KEY (`deviceid`, `phonebookid`)
 );";
@@ -126,7 +126,7 @@ $queries[] = "CREATE TABLE IF NOT EXISTS digium_phones_status_entries (
 
 $queries[] = "CREATE TABLE IF NOT EXISTS digium_phones_device_statuses (
 	`id` INT NOT NULL,
-	`deviceid` INT NOT NULL,
+	`deviceid` BIGINT NOT NULL,
 	`statusid` INT NOT NULL,
 	PRIMARY KEY (`deviceid`, `statusid`)
 );";
@@ -146,7 +146,7 @@ $queries[] = "CREATE TABLE IF NOT EXISTS digium_phones_customapp_settings (
 
 $queries[] = "CREATE TABLE IF NOT EXISTS digium_phones_device_customapps (
 	`id` INT NOT NULL,
-	`deviceid` INT NOT NULL,
+	`deviceid` BIGINT NOT NULL,
 	`customappid` INT NOT NULL,
 	PRIMARY KEY (`deviceid`, `customappid`)
 );";
@@ -166,7 +166,7 @@ $queries[] = "CREATE TABLE IF NOT EXISTS digium_phones_network_settings (
 
 $queries[] = "CREATE TABLE IF NOT EXISTS digium_phones_device_networks (
 	`id` INT NOT NULL,
-	`deviceid` INT NOT NULL,
+	`deviceid` BIGINT NOT NULL,
 	`networkid` INT NOT NULL,
 	PRIMARY KEY (`deviceid`, `networkid`)
 );";
@@ -186,14 +186,14 @@ $queries[] = "CREATE TABLE IF NOT EXISTS digium_phones_externalline_settings (
 
 $queries[] = "CREATE TABLE IF NOT EXISTS digium_phones_device_externallines (
 	`id` INT NOT NULL,
-	`deviceid` INT NOT NULL,
+	`deviceid` BIGINT NOT NULL,
 	`externallineid` INT NOT NULL,
 	PRIMARY KEY (`deviceid`, `externallineid`)
 );";
 
 $queries[] = "CREATE TABLE IF NOT EXISTS digium_phones_queues (
 	`queueid` INT NOT NULL,
-	`deviceid` INT NOT NULL,
+	`deviceid` BIGINT NOT NULL,
 	`permission` VARCHAR(8),
 	PRIMARY KEY (`queueid`, `deviceid`, `permission`)
 );";
@@ -207,7 +207,7 @@ $queries[] = "CREATE TABLE IF NOT EXISTS digium_phones_logos (
 
 $queries[] = "CREATE TABLE IF NOT EXISTS digium_phones_device_logos (
 	`id` INT NOT NULL,
-	`deviceid` INT NOT NULL,
+	`deviceid` BIGINT NOT NULL,
 	`logoid` INT NOT NULL,
 	PRIMARY KEY (`deviceid`, `logoid`)
 );";
@@ -223,7 +223,7 @@ $queries[] = "CREATE TABLE IF NOT EXISTS digium_phones_alerts (
 
 $queries[] = "CREATE TABLE IF NOT EXISTS digium_phones_device_alerts (
 	`id` INT NOT NULL,
-	`deviceid` INT NOT NULL,
+	`deviceid` BIGINT NOT NULL,
 	`alertid` INT NOT NULL,
 	PRIMARY KEY (`deviceid`, `alertid`)
 );";
@@ -238,7 +238,7 @@ $queries[] = "CREATE TABLE IF NOT EXISTS digium_phones_ringtones (
 
 $queries[] = "CREATE TABLE IF NOT EXISTS digium_phones_device_ringtones (
 	`id` INT NOT NULL,
-	`deviceid` INT NOT NULL,
+	`deviceid` BIGINT NOT NULL,
 	`ringtoneid` INT NOT NULL,
 	PRIMARY KEY (`deviceid`, `ringtoneid`)
 );";
