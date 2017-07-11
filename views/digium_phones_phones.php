@@ -539,7 +539,7 @@ if (!empty($devices)) foreach ($devices as $deviceid=>$device) {
 		$mac = '';
 		if ($sessions) foreach ($sessions as $session_line) {
 			$matches = null;
-			if (preg_match('/:'.$addr.':.*MAC:([a-fA-F0-9]{12})$/', $session_line, $matches)) {
+			if (preg_match('/:'.$addr.'.*MAC:([a-fA-F0-9]{12})$/', $session_line, $matches)) {
 				$mac = $matches[1];
 				break;
 			}
