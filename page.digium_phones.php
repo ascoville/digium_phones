@@ -239,6 +239,7 @@ if (isset($_POST['general_submit'])) {
 
 	$device = array();
 	$device['id'] = $deviceid;
+	unlink('/var/www/html/digium_phones/smartblf-' . $deviceid . '.xml');
 	$digium_phones->delete_device($device);
 	$digium_phones->read_devices();
 } else if (isset($_GET['reconfiguredevice_submit'])) {
