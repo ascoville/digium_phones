@@ -197,7 +197,11 @@ $('form').submit(function() {
 <?php
 	}
 ?>
-
+	if (document.getElementById('edit_area_toggle_checkbox_smartblf_file').checked) {
+		alert("The SmartBLF editor cannot be toggled on.");
+		return false;
+	}
+	
 	$('#lines').attr("multiple", "multiple");
  	$('#lines option').each(function() {
  		$(this).attr("selected", "selected");
