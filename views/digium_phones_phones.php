@@ -1,8 +1,16 @@
 <h2>Phones</h2>
 <hr />
 <script type="text/javascript" src="modules/digium_phones/assets/js/phones.js"></script>
+<script language="javascript" type="text/javascript" src="modules/digium_phones/edit_area/edit_area_full.js"></script>
 <form id="digium_phones_editdevice" name="digium_phones_editdevice" action="config.php?type=setup&display=digium_phones&digium_phones_form=phones_edit" method="post">
 <script>
+editAreaLoader.init({
+        id : "smartblf_file"            // textarea id
+        ,syntax: "xml"                  // syntax to be uses for highgliting
+        ,start_highlight: true          // to display with highlight mode on start-up
+        ,display: "later"               // leave editor off on load
+});
+
 function reconfiguredevice(id)
 {
 	if ($('#button_reload').is(":visible")) {
@@ -1169,7 +1177,7 @@ $table->add_row(array( 'data' => fpbx_label('Prefer Handset to Headset:', 'Sets 
 			<option value="yes" ' . ($devices['settings']['headset_answer'] == 'yes' ? 'selected' : '') . '>Enabled</option></select>'));
 
 if ($editdev != '0') {
-$table->add_row(array( 'data' => fpbx_label('Phone SmartBLF XML:', 'Set the SmartBLF XML for the phone.')),
+$table->add_row(array( 'data' => fpbx_label('Phone SmartBLF XML:', 'Set the SmartBLF XML for the phone. "Toggle editor" checkbox must be unchecked to save changes!')),
 				array( 'data' => '<textarea id="smartblf_file" name="smartblf_file" cols="100" rows="20" sytle="overflow:scroll;"/>' . htmlspecialchars($smartblf_text) . '</textarea>'));
 }
 echo $table->generate();
