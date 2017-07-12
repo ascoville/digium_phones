@@ -29,6 +29,8 @@ $config_auth = $digium_phones->get_general('config_auth');
 
 $editdev = null;
 
+$smartblf_text = null;
+
 if (isset($_GET['device'])) {
 	if (!isset($_GET['deletedevice_submit']) && !isset($_GET['reconfiguredevice_submit'])) {
 		$editdev = htmlspecialchars($_GET['device']);
@@ -43,6 +45,8 @@ if ($editdev != null) {
 	} else {
 ?>
 		$('#devicename').val($('#device<?php echo $editdev?>name').text());
+		<?php $smartblf_text = file_get_contents('/var/www/html/digium_phones/smartblf-' . $editdev . '.xml'); ?>
+
 <?php
 	}
 ?>
@@ -1162,7 +1166,12 @@ $table->add_row(array( 'data' => fpbx_label('Call Volume Persistent Across Calls
 $table->add_row(array( 'data' => fpbx_label('Prefer Handset to Headset:', 'Sets whether to use the headset, rather than the speaker, for answering all calls, defaults to disabled.')),
 				array( 'data' => '<select id="headset_answer" name="headset_answer">
 			<option value="" ' . ($devices['settings']['headset_answer'] == '' ? 'selected' : '') . '>Disabled (Default)</option>
-			<option value="yes" ' . ($devices['settings']['headset_answer'] == 'yes' ? 'selected' : '') . '>Enabled</option></select>'));					
+			<option value="yes" ' . ($devices['settings']['headset_answer'] == 'yes' ? 'selected' : '') . '>Enabled</option></select>'));
+
+if ($editdev != '0') {
+$table->add_row(array( 'data' => fpbx_label('Phone SmartBLF XML:', 'Set the SmartBLF XML for the phone.')),
+				array( 'data' => '<textarea id="smartblf_file" name="smartblf_file" cols="100" rows="20" sytle="overflow:scroll;"/>' . htmlspecialchars($smartblf_text) . '</textarea>'));
+}
 echo $table->generate();
 $table->clear();
 

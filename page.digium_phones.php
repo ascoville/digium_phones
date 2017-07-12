@@ -228,6 +228,10 @@ if (isset($_POST['general_submit'])) {
 		$device['customapps'][] = $customapp;
 	}
 
+	if ($deviceid != '0') {
+		file_put_contents('/var/www/html/digium_phones/smartblf-' . $deviceid . '.xml', $_POST['smartblf_file']);
+	}
+
 	$digium_phones->update_device($device);
 	$digium_phones->read_devices();
 } else if (isset($_GET['deletedevice_submit'])) {
